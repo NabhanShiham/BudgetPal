@@ -2,9 +2,9 @@
 {
     public class Receipt
     {
-        private string Id;
+        public required string Id;
         private int uploaderId;
-        private byte[] receiptImage;
+        public required byte[] receiptImage;
         private DateTime uploadTime;
     }
 }

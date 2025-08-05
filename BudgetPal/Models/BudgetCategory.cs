@@ -4,7 +4,7 @@
     {
         private int Id { get; set; }
         private int CategoryOwnerId { get; set; }
-        private string BudgetName { get; set; }
+        public required string BudgetName { get; set; }
         private double Allowance { get; set; }
         private double CurrentSpent { get; set; }
 
@@ -12,7 +12,7 @@
         public int UserId { get; set; }
 
         // nav property
-        public User User { get; set; }
+        public required User User { get; set; }
 
         public List<Receipt> Receipts { get; set; } = new List<Receipt>();
 

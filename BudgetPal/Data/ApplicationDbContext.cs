@@ -6,6 +6,7 @@ namespace BudgetPal.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<FriendRequest>()
@@ -19,6 +20,7 @@ namespace BudgetPal.Data
                 .WithMany()
                 .HasForeignKey(fr => fr.ToUserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
 
     }
