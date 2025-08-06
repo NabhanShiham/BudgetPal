@@ -1,8 +1,13 @@
-﻿namespace BudgetPal.Models
+﻿using BudgetPal.Data;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BudgetPal.Models
 {
     public class UserProfile
     {
-        private int Id { get; set; }
+        [Key]
+        public required string Id { get; set; }
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required string Email { get; set; }
@@ -11,11 +16,14 @@
         private double MainBudget { get; set; }
         private double CurrentSpent  { get; set; }
 
-        // nav property
-        public required User User { get; set; }
+        // Foreign key
+        [Required]
+        public required string ApplicationUserId { get; set; }
 
-        // foreign key
-        public int UserId { get; set; }
+        // Navigation property
+        [ForeignKey("ApplicationUserId")]
+        public required ApplicationUser User { get; set; }
+
 
         private List<Receipt> Receipts = new List<Receipt> { };
         private List<BudgetCategory> BudgetCategories = new List<BudgetCategory> { };

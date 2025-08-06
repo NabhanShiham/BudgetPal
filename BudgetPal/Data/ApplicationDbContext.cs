@@ -1,6 +1,7 @@
 using BudgetPal.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace BudgetPal.Data
 {
@@ -9,6 +10,8 @@ namespace BudgetPal.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.Entity<FriendRequest>()
                 .HasOne(fr => fr.FromUser)
                 .WithMany()
@@ -20,6 +23,19 @@ namespace BudgetPal.Data
                 .WithMany()
                 .HasForeignKey(fr => fr.ToUserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(u => u.UserProfile)
+                .WithOne(p => p.User)
+                .HasForeignKey<UserProfile>(p => p.ApplicationUserId);
+
+
+            builder.Entity<UserProfile>()
+                    .HasOne(up => up.User)
+                    .WithMany()
+                    .HasForeignKey(up => up.ApplicationUserId);
+
+
 
         }
 

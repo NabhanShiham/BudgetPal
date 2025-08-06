@@ -1,4 +1,6 @@
-﻿namespace BudgetPal.Models
+﻿using BudgetPal.Data;
+
+namespace BudgetPal.Models
 {
     public class BudgetCategory
     {
@@ -12,7 +14,7 @@
         public int UserId { get; set; }
 
         // nav property
-        public required User User { get; set; }
+        public required ApplicationUser User { get; set; }
 
         public List<Receipt> Receipts { get; set; } = new List<Receipt>();
 
