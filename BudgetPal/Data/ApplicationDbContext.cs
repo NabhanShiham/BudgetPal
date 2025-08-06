@@ -30,13 +30,6 @@ namespace BudgetPal.Data
                 .HasForeignKey<UserProfile>(p => p.ApplicationUserId);
 
 
-            builder.Entity<UserProfile>()
-                    .HasOne(up => up.User)
-                    .WithMany()
-                    .HasForeignKey(up => up.ApplicationUserId);
-
-
-
         }
 
     }
