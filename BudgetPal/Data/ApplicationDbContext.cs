@@ -28,9 +28,10 @@ namespace BudgetPal.Data
                 .HasOne(u => u.UserProfile)
                 .WithOne(p => p.User)
                 .HasForeignKey<UserProfile>(p => p.ApplicationUserId);
-
-
         }
+
+            public DbSet<UserProfile> UserProfiles { get; set; }
+
 
     }
 }

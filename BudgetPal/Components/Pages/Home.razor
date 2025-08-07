@@ -1,7 +1,24 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@inject NavigationManager NavigationManager
+@inject IUserProfileService UserProfileService
+@using BudgetPal.Services
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
-<h1>Welcome to BudgetPal!</h1>
+<AuthorizeView>
+    <NotAuthorized>
+        <PageTitle>Home</PageTitle>
+    <h1>Welcome to BudgetPal!</h1>
 
-<p>Make all your budgetting dreams come true fr.</p>
+    <p>Make all your budgetting dreams come true fr.</p>
+    </NotAuthorized>
+    <Authorized>
+        <PageTitle>Dashboard</PageTitle>
+        <h1>Dashboard</h1>
+
+        <p>Welcome to your dashboard!</p>
+
+
+    </Authorized>
+</AuthorizeView>
